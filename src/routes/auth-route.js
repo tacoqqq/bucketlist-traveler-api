@@ -6,7 +6,6 @@ const AuthService = require('../services/auth-service');
 authRouter
     .route('/')
     .post(bodyParser, (req,res,next) => {
-        console.log('inside authRouter')
         const { email, password } = req.body
         const loginUser = {
             email,
@@ -29,7 +28,6 @@ authRouter
 
                 return AuthService.comparePasswords(password, user.password)
                         .then(passwordsMatch => {
-                            console.log('passwords dont match')
                             if (!passwordsMatch){
                                 res.statusMessage = 'Incorrect email or password.'
                                 return res.status(401).end();

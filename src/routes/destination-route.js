@@ -27,9 +27,6 @@ destinationRouter
             return res.status(400).end()
         }
 
-        //get coordinates from Google API
-        console.log('working')
-
         ApiService.getCoordinates(destination)
             .then(response => {
                 if (!response){
@@ -49,12 +46,10 @@ destinationRouter
                             user_id: id
                         }
 
-                        console.log(newDestination)
                         const knexInstance = req.app.get('db')
 
                         DestinationService.insertNewDestination(knexInstance,newDestination)
                             .then(insertedDestination => {
-                                console.log(insertedDestination)
                                 return res
                                         .status(201)
                                         .location(path.posix.join(req.originalUrl, `/${insertedDestination.id}`))

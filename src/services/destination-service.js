@@ -8,8 +8,6 @@ const DestinationService = {
     },
 
     insertNewDestination(knex,destinationInfo){
-        console.log('inside inserting destination')
-        console.log(destinationInfo)
         return knex('bucketlist_destinations')
             .insert(destinationInfo)
             .returning('*')

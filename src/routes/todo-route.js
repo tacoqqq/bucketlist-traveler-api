@@ -53,7 +53,6 @@ todoRouter
     .route('/:destinationId')    
     .all(requireAuth, (req,res,next) => {
         const user_id = req.user.id
-        console.log(user_id)
         const destination_id = Number(req.params.destinationId)
         TodoService.getAllTodosFromOneDestination(
             req.app.get('db'),
@@ -119,7 +118,6 @@ todoRouter
 
         for (const [key,value] of Object.entries(updatedTodo)){
             if (value == undefined){
-                console.log(key)
                 return res.status(400).json({
                     error: `Missing ${key} in the request body!`
                 })

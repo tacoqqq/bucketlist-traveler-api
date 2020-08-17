@@ -4,14 +4,12 @@ const config = require('../config')
 
 const AuthService = {
     getUserWithUserName(knex,email){
-        console.log('inside the auth service getting user name')
         return knex('bucketlist_users')
                 .where('email', email)
                 .first()
     },
 
     comparePasswords(password,hash){
-        console.log('inside the auth service comparing passwords')
         return bcrypt.compare(password,hash)
     },
 

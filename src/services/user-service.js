@@ -24,7 +24,6 @@ const UserService = {
     },
 
     hasUser(knex,email){
-        console.log('inside hasUser')
         return knex('bucketlist_users')
                 .where('email', email)
                 .first()

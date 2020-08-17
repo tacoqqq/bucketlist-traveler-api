@@ -6,7 +6,6 @@ const ApiService = {
     getCoordinates(destination){
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=${GooglePlacesAPIKey}`
         
-        console.log(destination)
         return axios.get(encodeURI(url))
             .then(res => {
                 if(res.statusText !== 'OK'){
