@@ -6,6 +6,7 @@ const AuthService = require('../services/auth-service');
 authRouter
     .route('/')
     .post(bodyParser, (req,res,next) => {
+        console.log('inside auth route')
         const { email, password } = req.body
         const loginUser = {
             email,

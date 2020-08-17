@@ -26,9 +26,8 @@ const ApiService = {
     
     
     getImages(place){
-        let polishedPlace = place.toLowerCase().split(' ').join('%20')
-        const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${polishedPlace}&inputtype=textquery&fields=photos,geometry&key=${GooglePlacesAPIKey}`
-
+        const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${place}&inputtype=textquery&fields=photos,geometry&key=${GooglePlacesAPIKey}`
+        console.log(encodeURI(url))
         return axios.get(encodeURI(url))
             .then(res => {
                 if(res.statusText !== 'OK'){
@@ -41,7 +40,9 @@ const ApiService = {
                 return locationPhotoReference
             })
             .then(reference => {
+                console.log(reference)
                 const requestUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=${reference}&key=${GooglePlacesAPIKey}`
+                console.log(requestUrl)
                 return requestUrl
             })
             .catch(err => {
