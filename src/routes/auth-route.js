@@ -6,7 +6,6 @@ const AuthService = require('../services/auth-service');
 authRouter
     .route('/')
     .post(bodyParser, (req,res,next) => {
-        console.log('inside auth route')
         const { email, password } = req.body
         const loginUser = {
             email,
@@ -16,7 +15,7 @@ authRouter
         for (const [key,value] of Object.entries(loginUser))
             if ( value == null){
                 res.statusMessage = `Missing '${key}' in request body`
-                return res.stats(401).end()
+                return res.status(401).end()
             }
 
         const knexInstance = req.app.get('db')

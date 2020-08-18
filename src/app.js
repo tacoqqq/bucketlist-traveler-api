@@ -17,7 +17,7 @@ app.use(morgan(morganSetting))
 app.use(helmet());
 app.use(cors());
 
-app.get('/api/', (req,res) => {
+app.get('/api', (req,res) => {
     res.json({
         ok: true
     })

@@ -14,6 +14,7 @@ function requireAuth(req,res,next){
 
     try {
         const payload = AuthService.verifyJwt(bearerToken)
+        console.log(payload)
         const knexInstance = req.app.get('db')
         AuthService.getUserWithUserName(knexInstance,payload.sub)
             .then(user => {
@@ -26,6 +27,7 @@ function requireAuth(req,res,next){
             })
             .catch(next)
     } catch(error) {
+        console.log('this is the error')
         res.statusMessage = 'Unauthorized request'
         res.status(401).end()
     }
