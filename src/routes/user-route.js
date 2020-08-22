@@ -21,8 +21,9 @@ userRouter
             })
     })
     .post(bodyParser, (req,res,next) => {
-        const { email, password } = req.body
+        const { email, password, nickname } = req.body
         const newUserInfo = {
+            nickname,
             email,
             password
         }
@@ -57,6 +58,7 @@ userRouter
                 return UserService.hashPassword(password)
                     .then(hashedPassword => {
                         const newUserInfoWithHashedPassword = {
+                            nickname,
                             email,
                             password: hashedPassword
                         }
