@@ -41,7 +41,7 @@ todoRouter
             .then(insertedTodo => {
                 return res
                         .status(201)
-                        .location(path.posix.join(req.originalUrl,`/${insertedTodo.id}`))
+                        .location(path.posix.join(req.originalUrl,`${insertedTodo.destination_id}/${insertedTodo.id}`))
                         .json(TodoService.sanitizeTodo(insertedTodo))
 
             })
