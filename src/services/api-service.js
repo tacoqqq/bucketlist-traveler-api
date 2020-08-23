@@ -19,15 +19,13 @@ const ApiService = {
             })
             .catch(err => {
                 console.log(err)
-                //console.error(err.message)
             })
-
     },
     
     
     getImages(place){
+        //To get the place image, Google requires to make an API call to its Place API first and get a so-called "photo reference" 
         const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${place}&inputtype=textquery&fields=photos,geometry&key=${GooglePlacesAPIKey}`
-        console.log(encodeURI(url))
         return axios.get(encodeURI(url))
             .then(res => {
                 if(res.statusText !== 'OK'){
@@ -40,9 +38,8 @@ const ApiService = {
                 return locationPhotoReference
             })
             .then(reference => {
-                console.log(reference)
+                //use the "reference" to make another call to retrieve the image
                 const requestUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=${reference}&key=${GooglePlacesAPIKey}`
-                console.log(requestUrl)
                 return requestUrl
             })
             .catch(err => {

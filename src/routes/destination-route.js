@@ -67,7 +67,6 @@ destinationRouter
     .all(requireAuth, (req,res,next) => {
         const user_id = req.user.id
         const destination_id = Number(req.params.destinationId)
-        console.log(destination_id)
         DestinationService.isThereTheDestination(
             req.app.get('db'),
             destination_id

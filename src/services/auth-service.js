@@ -13,6 +13,7 @@ const AuthService = {
         return bcrypt.compare(password,hash)
     },
 
+    //used when user requests to log in
     createJwt(subject,payload){
         return jwt.sign(payload, config.JWT_SECRET, {
             subject,
@@ -20,6 +21,7 @@ const AuthService = {
         })
     },
 
+    //used when user request to access endpoints
     verifyJwt(token) {
         return jwt.verify(token,config.JWT_SECRET,{
             algorithms: ['HS256']
