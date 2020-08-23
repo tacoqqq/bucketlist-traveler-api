@@ -1,4 +1,4 @@
-# LaterTube: Bucket List Traveler
+# Bucket List Traveler
 
 Link to Live Demo: https://bucketlist-traveler-app.vercel.app/
 
